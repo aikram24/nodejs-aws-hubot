@@ -85,7 +85,7 @@ module.exports = function(robot) {
             }
 
 
-            
+
             messages.push({
               time: moment(ins.LaunchTime).format('YYYY-MM-DD HH:mm:ssZ'),
               state: ins.State.Name,
@@ -102,7 +102,8 @@ module.exports = function(robot) {
             return moment(a.time) - moment(b.time);
           });
           message = tsv.stringify(messages) || '[None]';
-          return msg.send(message);
+          // return msg.send(message);
+          return msg.send("```" + message + "```");
         }
       }
     });
