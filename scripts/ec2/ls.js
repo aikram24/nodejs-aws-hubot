@@ -6,9 +6,6 @@
 // # Commands:
 // #   hubot ec2 ls - Displays Instances
 
-// # Notes:
-// #   --instance_id=***     : [optional] The id of an instance. If omit it, returns info about all instances.
-// #   --inst
 
 
 var getArgParams, moment, tsv, util;
@@ -87,6 +84,7 @@ module.exports = function(robot) {
 
 
             messages.push({
+              
               time: moment(ins.LaunchTime).format('YYYY-MM-DD HH:mm:ssZ'),
               state: ins.State.Name,
               id: ins.InstanceId,
@@ -108,4 +106,16 @@ module.exports = function(robot) {
       }
     });
   });
+};
+
+
+module.exports = function(robot) {
+  return robot.respond(/ec2 help(.*)$/i, function(msg) {
+    var helpMessage = "*EC2 Help Menu:* \n"
+    helpMessage += "*--instance_id=* \*\*\*        : [optional] The id of an instance. If omit it, returns info about all instances. \n"
+    helpMessage += "*--instance_filter=* \*\*\*    : [optional] The name of an instance. If omit it, returns info about all instance \n"
+  return msg.send(helpMessage);
+
+  });
+
 };
