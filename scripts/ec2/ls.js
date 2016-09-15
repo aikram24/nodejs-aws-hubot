@@ -37,7 +37,6 @@ getArgParamsFunc = function(arg) {
 module.exports = function(robot) {
   return robot.respond(/ec2 ls(.*)$/i, function(msg) {
 var userAccess= common.userAccess;
-console.log(userAccess);
  if (msg.message.user.name in common.oc(userAccess)) {
     // msg.send(msg.message.user.name);
     var arg_params = getArgParamsFunc(msg.match[1]);
